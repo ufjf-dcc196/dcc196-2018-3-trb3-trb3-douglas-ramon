@@ -1,13 +1,21 @@
 package com.example.douglas.trb3_douglas_ramon.model;
+import com.google.gson.annotations.SerializedName;
 
 public class Livro {
-    private int id;
-    private String title;
-    private String subtitle;
-    private String author;
-    private String publisher;
-    private String publisherDate;
-    private String description;
+    @SerializedName("id")
+    int id;
+    @SerializedName("title")
+    String title;
+    @SerializedName("subtitle")
+    String subtitle;
+    @SerializedName("author")
+    String author;
+    @SerializedName("publisher")
+    String publisher;
+    @SerializedName("publisherDate")
+    String publisherDate;
+    @SerializedName("description")
+    String description;
 
     public Livro(int id, String title, String subtitle, String author, String publisher, String publisherDate, String description) {
         this.id = id;
@@ -19,7 +27,7 @@ public class Livro {
         this.description = description;
     }
 
-    public Livro() {}
+    public Livro() { }
 
     public int getId() {
         return id;
