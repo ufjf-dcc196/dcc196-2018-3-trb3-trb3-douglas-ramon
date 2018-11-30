@@ -11,14 +11,14 @@ public class LivroDAO {
 
     private SQLiteDatabase db;
     private DbHelper banco;
-    private String tabela = LivroContract.Evento.TABLE_NAME;
-    private String title = LivroContract.Evento.COLUMN_NAME_TITLE;
-    private String subtitle = LivroContract.Evento.COLUMN_NAME_SUBTITLE;
-    private String author = LivroContract.Evento.COLUMN_NAME_AUTHOR;
-    private String publisher = LivroContract.Evento.COLUMN_NAME_PUBLISHER;
-    private String publisherDate = LivroContract.Evento.COLUMN_NAME_PUBLISHER_DATE;
-    private String description = LivroContract.Evento.COLUMN_NAME_DESCRIPTION;
-    private String id = LivroContract.Evento.COLUMN_NAME_ID;
+    private String tabela = LivroContract.Livro.TABLE_NAME;
+    private String title = LivroContract.Livro.COLUMN_NAME_TITLE;
+    private String subtitle = LivroContract.Livro.COLUMN_NAME_SUBTITLE;
+    private String author = LivroContract.Livro.COLUMN_NAME_AUTHOR;
+    private String publisher = LivroContract.Livro.COLUMN_NAME_PUBLISHER;
+    private String publisherDate = LivroContract.Livro.COLUMN_NAME_PUBLISHER_DATE;
+    private String description = LivroContract.Livro.COLUMN_NAME_DESCRIPTION;
+    private String id = LivroContract.Livro.COLUMN_NAME_ID;
 
     private ContentValues valores = new ContentValues();
     private String[] campos = {title, subtitle, author, publisher, publisherDate};
