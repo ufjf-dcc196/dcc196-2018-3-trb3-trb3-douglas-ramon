@@ -1,6 +1,6 @@
 package com.example.douglas.trb3_douglas_ramon.model;
 
-public class livro {
+public class Livro {
     private int id;
     private String title;
     private String subtitle;
@@ -9,7 +9,7 @@ public class livro {
     private String publisherDate;
     private String description;
 
-    public livro(int id, String title, String subtitle, String author, String publisher, String publisherDate, String description) {
+    public Livro(int id, String title, String subtitle, String author, String publisher, String publisherDate, String description) {
         this.id = id;
         this.title = title;
         this.subtitle = subtitle;
@@ -19,7 +19,7 @@ public class livro {
         this.description = description;
     }
 
-    public livro() {}
+    public Livro() {}
 
     public int getId() {
         return id;
