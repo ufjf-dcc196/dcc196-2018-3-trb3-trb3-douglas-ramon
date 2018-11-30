@@ -15,7 +15,7 @@ public class LivroContract {
         public static final String COLUMN_NAME_DESCRIPTION = "description";
     }
 
-    public static final String CREATE_EVENTO = "CREATE TABLE " + Livro.TABLE_NAME + " ("
+    public static final String CREATE_LIVRO= "CREATE TABLE " + Livro.TABLE_NAME + " ("
             + Livro._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Livro.COLUMN_NAME_TITLE + " TEXT, "
             + Livro.COLUMN_NAME_SUBTITLE + " TEXT, "
@@ -25,7 +25,7 @@ public class LivroContract {
             + Livro.COLUMN_NAME_DESCRIPTION + " TEXT"
             + ")";
 
-    public final static String DROP_EVENTO = "DROP TABLE IF EXISTS " + Livro.TABLE_NAME;
+    public final static String DROP_LIVRO = "DROP TABLE IF EXISTS " + Livro.TABLE_NAME;
 
     public LivroContract() {
     }
