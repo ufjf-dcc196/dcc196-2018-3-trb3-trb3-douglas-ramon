@@ -4,10 +4,12 @@
 
 #TODO: 
 ## Objetivos: 
-O sistema tem como objetivo registrar uma lista pessoal de livros desejados a serem lidos.
+Sistema possui uma listagem de todos livros vindo da API do google e permite visualizar o detalhe de cada livro e reservar sua descrição em uma lista para controle de livros a serem lidos.
+
 
 ## Público Alvo: 
 Usuários que possuem hábito de leitura.
+
 
 ## Requisitos Mínimos para entregar o maior valor para o público alvo:
 ...
