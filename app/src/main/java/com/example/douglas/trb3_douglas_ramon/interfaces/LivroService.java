@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface LivroService {
-    @GET("https://www.googleapis.com/books/v1/volumes?q=search+terms")
-    Call<Livro> getLivro(@Path("items") String livro);
+    @GET("books/{id}")
+    Call<Livro> getLivro(@Path("id") String livro);
 
 }

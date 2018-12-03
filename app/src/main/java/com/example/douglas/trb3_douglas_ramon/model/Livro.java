@@ -1,30 +1,28 @@
 package com.example.douglas.trb3_douglas_ramon.model;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Livro {
-    @SerializedName("id")
-    int id;
-    @SerializedName("title")
-    String title;
-    @SerializedName("subtitle")
-    String subtitle;
-    @SerializedName("author")
-    String author;
+    private int id;
+
+    @SerializedName("name")
+    String name;
     @SerializedName("publisher")
     String publisher;
-    @SerializedName("publisherDate")
-    String publisherDate;
-    @SerializedName("description")
-    String description;
+    @SerializedName("numberOfPages")
+    String numberOfPages;
+    @SerializedName("authors")
+    List<String> authors;
+    @SerializedName("released")
+    String released;
 
-    public Livro(int id, String title, String subtitle, String author, String publisher, String publisherDate, String description) {
-        this.id = id;
-        this.title = title;
-        this.subtitle = subtitle;
-        this.author = author;
+    public Livro(String name, List<String> authors, String publisher, String numberOfPages, String released) {
+        this.name = name;
+        this.authors = authors;
         this.publisher = publisher;
-        this.publisherDate = publisherDate;
-        this.description = description;
+        this.numberOfPages = numberOfPages;
+        this.released = released;
     }
 
     public Livro() { }
@@ -33,55 +31,53 @@ public class Livro {
         return id;
     }
 
-    public void setId(int id) {
+    public Livro setId(int id) {
         this.id = id;
+        return this;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public Livro setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public Livro setPublisher(String publisher) {
         this.publisher = publisher;
+        return this;
     }
 
-    public String getPublisherDate() {
-        return publisherDate;
+    public String getNumberOfPages() {
+        return numberOfPages;
     }
 
-    public void setPublisherDate(String publisherDate) {
-        this.publisherDate = publisherDate;
+    public Livro setNumberOfPages(String numberOfPages) {
+        this.numberOfPages = numberOfPages;
+        return this;
     }
 
-    public String getDescription() {
-        return description;
+    public List<String> getAuthors() {
+        return authors;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Livro setAuthors(List<String> authors) {
+        this.authors = authors;
+        return this;
+    }
+
+    public String getReleased() {
+        return released;
+    }
+
+    public Livro setReleased(String released) {
+        this.released = released;
+        return this;
     }
 }

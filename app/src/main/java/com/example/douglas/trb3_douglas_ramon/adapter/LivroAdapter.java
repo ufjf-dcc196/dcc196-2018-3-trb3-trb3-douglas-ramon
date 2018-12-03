@@ -64,7 +64,7 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.txtNome.setText(livros.get(i).getTitle());
+        viewHolder.txtNome.setText(livros.get(i).getName());
     }
 
     @Override

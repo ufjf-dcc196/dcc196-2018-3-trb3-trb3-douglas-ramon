@@ -12,16 +12,15 @@ public class LivroDAO {
     private SQLiteDatabase db;
     private DbHelper banco;
     private String tabela = LivroContract.Livro.TABLE_NAME;
-    private String title = LivroContract.Livro.COLUMN_NAME_TITLE;
-    private String subtitle = LivroContract.Livro.COLUMN_NAME_SUBTITLE;
-    private String author = LivroContract.Livro.COLUMN_NAME_AUTHOR;
+    private String name = LivroContract.Livro.COLUMN_NAME_NAME;
+    private String numberOfPages = LivroContract.Livro.COLUMN_NAME_NUMBER_OF_PAGES;
+    private String authors = LivroContract.Livro.COLUMN_NAME_AUTHORS;
     private String publisher = LivroContract.Livro.COLUMN_NAME_PUBLISHER;
-    private String publisherDate = LivroContract.Livro.COLUMN_NAME_PUBLISHER_DATE;
-    private String description = LivroContract.Livro.COLUMN_NAME_DESCRIPTION;
-    private String id = LivroContract.Livro.COLUMN_NAME_ID;
+    private String released = LivroContract.Livro.COLUMN_NAME_RELEASED;
+    private String id = LivroContract.Livro._ID;
 
     private ContentValues valores = new ContentValues();
-    private String[] campos = {title, subtitle, author, publisher, publisherDate};
+    private String[] campos = {name, numberOfPages, authors, publisher, released};
     private Cursor cursor;
 
 
@@ -31,12 +30,11 @@ public class LivroDAO {
 
     public void putHelper(ContentValues v, String _title, String _subtitle, String _author, String _publisher,
                           String _publisherDate, String _description) {
-        v.put(title, _title);
-        v.put(subtitle, _subtitle);
-        v.put(author, _author);
+        v.put(name, _title);
+        v.put(numberOfPages, _subtitle);
+        v.put(authors, _author);
         v.put(publisher, _publisher);
-        v.put(publisherDate, _publisherDate);
-        v.put(description, _description);
+        v.put(released, _publisherDate);
     }
 
     public String insereDado(String _title, String _subtitle, String _author, String _publisher,
