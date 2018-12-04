@@ -84,6 +84,14 @@ public class LivroDAO {
         db.update(tabela, valores, where, null);
         db.close();
     }
+
+    public void removeLivro(int _id) {
+        String where = id + " = ?";
+        String[] args = {String.valueOf(_id)};
+        db = banco.getWritableDatabase();
+        db.delete(tabela, where, args);
+        db.close();
+    }
 }
 
 

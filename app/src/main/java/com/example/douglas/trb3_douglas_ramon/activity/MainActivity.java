@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAdicionar;
     private RecyclerView rclLivros;
     public static List<Livro> livrosUsuario = new ArrayList<>();
-    private static DbHelper dbHelper;
+    public static DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         rclLivros.setLayoutManager(new LinearLayoutManager(this));
         final LivroAdapter livroAdapter = new LivroAdapter(livrosUsuario);
         rclLivros.setAdapter(livroAdapter);
+        livroAdapter.setOnLivroClickListener(new LivroAdapter.OnLivroClickListener() {
+            @Override
+            public void onLivroClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this, LivroUsuarioDetalheActivity.class);
+                intent.putExtra("posicao", position);
+                startActivity(intent);
+            }
+        });
     }
 
     public static List<Livro> listaLivrosUsuario() {
