@@ -1,11 +1,15 @@
-package com.example.douglas.trb3_douglas_ramon;
+package com.example.douglas.trb3_douglas_ramon.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.douglas.trb3_douglas_ramon.R;
 import com.example.douglas.trb3_douglas_ramon.adapter.LivroAdapter;
 import com.example.douglas.trb3_douglas_ramon.interfaces.LivroService;
 import com.example.douglas.trb3_douglas_ramon.model.Livro;
@@ -21,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnAdicionar;
     private RecyclerView rclLivros;
     public static List<Livro> livrosUsuario = new ArrayList<>();
 
@@ -29,24 +34,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://anapioficeandfire.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        LivroService livroService = retrofit.create(LivroService.class);
-
-        Call<Livro> livro = livroService.getLivro("1");
-        livro.enqueue(new Callback<Livro>() {
+        btnAdicionar = (Button) findViewById(R.id.btn_adicionar);
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<Livro> call, Response<Livro> response) {
-                Livro livroResponse = response.body();
-                Log.i("LIVRO", "Livro: " + livroResponse.getName() + " - publisher: " + livroResponse.getPublisher() + " - number of pages: " + livroResponse.getNumberOfPages() + " - authors: " + livroResponse.getAuthors() + " - released: " + livroResponse.getReleased());
-            }
-
-            @Override
-            public void onFailure(Call<Livro> call, Throwable t) {
-                Log.i("LIVRO", "onFailure: " + t.getMessage());
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListaLivrosActivity.class);
+                startActivity(intent);
             }
         });
 
