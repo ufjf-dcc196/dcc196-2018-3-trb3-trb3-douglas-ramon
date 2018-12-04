@@ -57,7 +57,7 @@ public class LivroDetalheActivity extends AppCompatActivity {
                 Intent intent = new Intent(LivroDetalheActivity.this, MainActivity.class);
                 LivroDAO crud = new LivroDAO(getBaseContext());
                 crud.insereDado(livro.getName(), livro.getAuthors().get(0), livro.getPublisher(), livro.getNumberOfPages(), livro.getReleased());
-                MainActivity.livrosUsuario.add(livro);
+                MainActivity.livrosUsuario = MainActivity.listaLivrosUsuario();
                 startActivity(intent);
             }
         });

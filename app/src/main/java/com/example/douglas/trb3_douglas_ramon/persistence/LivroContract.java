@@ -13,7 +13,7 @@ public class LivroContract {
         public static final String COLUMN_NAME_RELEASED = "released";
     }
 
-    public static final String CREATE_LIVRO= "CREATE TABLE " + Livro.TABLE_NAME + " ("
+    public static final String CREATE_LIVRO = "CREATE TABLE " + Livro.TABLE_NAME + " ("
             + Livro._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Livro.COLUMN_NAME_NAME + " TEXT, "
             + Livro.COLUMN_NAME_NUMBER_OF_PAGES + " TEXT, "
