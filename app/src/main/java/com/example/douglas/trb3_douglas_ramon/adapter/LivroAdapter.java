@@ -16,12 +16,17 @@ import java.util.List;
 public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> {
     private List<Livro> livros;
     private OnLivroClickListener listener;
+    private OnLivroLongClickListener longClickListener;
 
     public interface OnLivroClickListener {
         void onLivroClick(View view, int position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public interface OnLivroLongClickListener {
+        void onLivroLongClickListener(View view, int position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         public TextView txtNome;
 
         public ViewHolder(@NonNull View itemView) {
@@ -38,6 +43,20 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> 
                     }
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (longClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            longClickListener.onLivroLongClickListener(v, position);
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
         }
 
         @Override
@@ -48,6 +67,18 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> 
                     listener.onLivroClick(v, position);
                 }
             }
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            if(longClickListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    longClickListener.onLivroLongClickListener(v, position);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -78,5 +109,9 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> 
 
     public void setOnLivroClickListener(OnLivroClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setOnLivroLongClickListener(OnLivroLongClickListener longClickListener) {
+        this.longClickListener = longClickListener;
     }
 }

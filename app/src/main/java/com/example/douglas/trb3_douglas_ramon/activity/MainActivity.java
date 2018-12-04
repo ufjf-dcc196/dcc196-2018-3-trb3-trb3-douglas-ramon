@@ -16,6 +16,7 @@ import com.example.douglas.trb3_douglas_ramon.interfaces.LivroService;
 import com.example.douglas.trb3_douglas_ramon.model.Livro;
 import com.example.douglas.trb3_douglas_ramon.persistence.DbHelper;
 import com.example.douglas.trb3_douglas_ramon.persistence.LivroContract;
+import com.example.douglas.trb3_douglas_ramon.persistence.LivroDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LivroUsuarioDetalheActivity.class);
                 intent.putExtra("posicao", position);
                 startActivity(intent);
+            }
+        });
+        livroAdapter.setOnLivroLongClickListener(new LivroAdapter.OnLivroLongClickListener() {
+            @Override
+            public void onLivroLongClickListener(View view, int position) {
+                LivroDAO crud = new LivroDAO(getBaseContext());
+                crud.removeLivro(livrosUsuario.get(position).getId());
+                livrosUsuario.remove(position);
+                livroAdapter.notifyItemRemoved(position);
             }
         });
     }
