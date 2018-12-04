@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.activity_escolhido" />
-        <activity android:name=".activity.ListaLivrosActivity"></activity>
+        <activity android:name=".activity.ListaLivrosActivity" />
+        <activity android:name=".activity.LivroDetalheActivity"></activity>
     </application>
 
 </manifest>

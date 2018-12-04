@@ -27,7 +27,7 @@ public class ListaLivrosActivity extends AppCompatActivity {
 
     private Button btnVoltar;
     private RecyclerView rclLivros;
-    private List<Livro> livros = listaLivrosAPI();
+    public static List<Livro> livros = listaLivrosAPI();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +48,17 @@ public class ListaLivrosActivity extends AppCompatActivity {
         rclLivros.setLayoutManager(new LinearLayoutManager(this));
         final LivroAdapter livroAdapter = new LivroAdapter(livros);
         rclLivros.setAdapter(livroAdapter);
+        livroAdapter.setOnLivroClickListener(new LivroAdapter.OnLivroClickListener() {
+            @Override
+            public void onLivroClick(View view, int position) {
+                Intent intent = new Intent(ListaLivrosActivity.this, LivroDetalheActivity.class);
+                intent.putExtra("posicao", position);
+                startActivity(intent);
+            }
+        });
     }
 
-    private List<Livro> listaLivrosAPI() {
+    private static List<Livro> listaLivrosAPI() {
         final List<Livro> livros = new ArrayList<>();
 
         Retrofit retrofit = new Retrofit.Builder()

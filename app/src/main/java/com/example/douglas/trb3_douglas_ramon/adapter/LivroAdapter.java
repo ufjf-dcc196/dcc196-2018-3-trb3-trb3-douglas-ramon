@@ -76,7 +76,7 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.ViewHolder> 
         this.livros = livros;
     }
 
-    public void setOnLivroClickListe(OnLivroClickListener listener) {
+    public void setOnLivroClickListener(OnLivroClickListener listener) {
         this.listener = listener;
     }
 }
