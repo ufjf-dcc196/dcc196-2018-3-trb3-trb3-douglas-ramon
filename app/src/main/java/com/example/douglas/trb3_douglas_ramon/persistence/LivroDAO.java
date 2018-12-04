@@ -28,21 +28,21 @@ public class LivroDAO {
         banco = new DbHelper(context);
     }
 
-    public void putHelper(ContentValues v, String _title, String _subtitle, String _author, String _publisher,
-                          String _publisherDate, String _description) {
+    public void putHelper(ContentValues v, String _title, String _author, String _numberOfPages, String _publisher,
+                          String _released) {
         v.put(name, _title);
-        v.put(numberOfPages, _subtitle);
         v.put(authors, _author);
+        v.put(numberOfPages, _numberOfPages);
         v.put(publisher, _publisher);
-        v.put(released, _publisherDate);
+        v.put(released, _released);
     }
 
-    public String insereDado(String _title, String _subtitle, String _author, String _publisher,
-                             String _publisherDate, String _description) {
+    public String insereDado(String _title, String _author, String _publisher,
+                             String _numberOfPages, String _released) {
         long resultado;
         db = banco.getWritableDatabase();
 
-        putHelper(valores, _title, _subtitle, _author, _publisher, _publisherDate, _description );
+        putHelper(valores, _title, _author, _publisher, _numberOfPages, _released);
         resultado = db.insert(tabela, null, valores);
         db.close();
 
@@ -76,11 +76,11 @@ public class LivroDAO {
         return cursor;
     }
 
-    public void alteraRegistro(String _id, String _title, String _subtitle, String _author, String _publisher,
-                               String _publisherDate, String _description) {
+    public void alteraRegistro(String _id, String _title, String _author, String _numberOfPages, String _publisher,
+                               String _released) {
         String where = id + "=" + _id;
         db = banco.getWritableDatabase();
-        putHelper(valores, _title, _subtitle, _author, _publisher, _publisherDate, _description );
+        putHelper(valores, _title, _author, _numberOfPages, _publisher, _released);
         db.update(tabela, valores, where, null);
         db.close();
     }

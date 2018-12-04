@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import com.example.douglas.trb3_douglas_ramon.R;
 import com.example.douglas.trb3_douglas_ramon.model.Livro;
+import com.example.douglas.trb3_douglas_ramon.persistence.LivroDAO;
 
 public class LivroDetalheActivity extends AppCompatActivity {
 
+    private Button btnAdicionar;
     private Button btnVoltar;
     private TextView txtTitulo;
     private TextView txtAutor;
@@ -41,12 +43,24 @@ public class LivroDetalheActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int positcao = bundle.getInt("posicao");
-        Livro livro =ListaLivrosActivity.livros.get(positcao);
+        final Livro livro = ListaLivrosActivity.livros.get(positcao);
         txtTitulo.setText(livro.getName());
         txtAutor.setText(livro.getAuthors().get(0));
         txtEditora.setText(livro.getPublisher());
         txtRelease.setText(livro.getReleased());
         txtPaginas.setText(livro.getNumberOfPages());
+
+        btnAdicionar = (Button) findViewById(R.id.btn_adicionar_ld);
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LivroDetalheActivity.this, MainActivity.class);
+                LivroDAO crud = new LivroDAO(getBaseContext());
+                crud.insereDado(livro.getName(), livro.getAuthors().get(0), livro.getPublisher(), livro.getNumberOfPages(), livro.getReleased());
+                MainActivity.livrosUsuario.add(livro);
+                startActivity(intent);
+            }
+        });
 
     }
 }
